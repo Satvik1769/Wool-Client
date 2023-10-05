@@ -5,6 +5,9 @@ import { useState } from "react";
 export default function Login({ navigation }){
     const [email, setEmail]=useState("");
     const [password, setPassword] = useState("");
+    function register(){
+        navigation.navigate("Sign up")
+    }
     return(
         <SafeAreaView style={styles.container}>
             <View style={styles.text}>
@@ -16,10 +19,15 @@ export default function Login({ navigation }){
                 <Text style={styles.label}>Password</Text>
                 <TextInput style={styles.input} value={password} onChangeText={setPassword}/>
             </View>
-            <View style={{width:"100%",display:"flex",}}>
-            <Pressable style={styles.button}>
-                <Text style={{color:"#fff"}}>Login</Text>
-            </Pressable>
+            <View style={{width:"100%",display:"flex",alignItems:"center"}}>
+           <Button title="Sign In " variant="contained"  />
+           <View style={{display:"flex",flexDirection:"row",marginTop:10}}>
+           <Text style={{display:"flex",marginRight:10,alignItems:"center"}}>First Time?</Text>
+           <Pressable onPress={register}>
+            <Text style={{color:"blue"}}>Register</Text>
+           </Pressable>
+           </View>
+       
 
             </View>
         
@@ -39,7 +47,8 @@ const styles = StyleSheet.create({
         flexDirection:"row",
         alignItems:"center",
         marginLeft:10,
-        marginBottom:10
+        marginBottom:10,
+        justifyContent:"center"
     },
     label:{
       fontSize:25
@@ -50,12 +59,6 @@ const styles = StyleSheet.create({
         margin: 12,
         borderWidth: 1,
         padding: 10,
-    },
-    button:{
-        width:"15%",
-        height:21,
-        justifyContent:"center",
-        backgroundColor:"blue"
     }
 
 })
